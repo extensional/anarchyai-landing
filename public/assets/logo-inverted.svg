@@ -8,7 +8,7 @@
       text {
         fill: #fff;
         font-family: 'Inter', sans-serif;
-        font-size: 85px;
+        font-size: 80px;
         white-space: pre;
       }
     </style>
