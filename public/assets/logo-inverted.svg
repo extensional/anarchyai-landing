@@ -8,10 +8,10 @@
       text {
         fill: #fff;
         font-family: 'Inter', sans-serif;
-        font-size: 95px;
+        font-size: 85px;
         white-space: pre;
       }
     </style>
   </defs>
-  <text x="1.611" y="279.74">AnarchyAI</text>
+  <text x="1.611" y="279.74">Anarchy Labs</text>
 </svg>
