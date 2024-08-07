@@ -10,7 +10,7 @@
       </div>
       <form
         id="contactForm"
-        action="https://script.google.com/macros/s/AKfycbxJVVcWJEKb6NN1BCTfgptx_0bv3mRSJSiVIwjs-FJY0ZmmJ6p1VtNMAABx9xJ3-2xiAw/exec"
+        action="https://script.google.com/macros/s/AKfycbz-6y4SbYYWU2U3PNpbS-2SxCcmnowv1MeoyNNznUptJ-S6JWtqSNHuVF9ZEh8yoNPa0w/exec"
         method="POST"
         class="mt-3 flex flex-col gap-y-6"
       >
@@ -31,11 +31,11 @@
         <div>
           <label for="linkedin" class="sr-only">LinkedIn Profile</label>
           <input
-            type="url"
+            type="text"
             name="linkedin"
             id="linkedin"
             autocomplete="linkedin"
-            pattern="https://linkedin\.com\.in.*"
+            pattern="https://www\.linkedin\.com/in/[A-Za-z0-9-]+/?"
             title="Please enter a valid LinkedIn profile URL like https://www.linkedin.com/in/username"
             class="block w-full appearance-none rounded-md border-0 bg-primary-50 px-4 py-4 text-base ring-1 ring-primary-900/40 transition placeholder:text-primary-950/60 hover:ring-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-primary-950 dark:ring-primary-200/40 dark:placeholder:text-primary-200/60 dark:hover:ring-primary-400 dark:focus:ring-primary-400"
             placeholder="LinkedIn Profile"
@@ -68,6 +68,7 @@
             placeholder="Company"
           />
         </div>
+        <div id="errorMessage" class="error"></div>
 
         <!-- Company size input -->
         <div>
@@ -138,6 +139,16 @@
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function(event) {
+      const linkedinUrl = (document.getElementById('linkedin') as HTMLButtonElement).value;
+      const errorMessage = document.getElementById('errorMessage');
+
+      // Regex pattern for LinkedIn profile URL validation
+      const linkedinPattern = /^https:\/\/(?:www\.)?linkedin\.com\/in\/[A-Za-z0-9-]+\/?$/;
+      
+      if(!linkedinPattern.test(linkedinUrl)){
+        event.preventDefault();
+        alert('Please enter a valid LinkedIn profile URL like https://www.linkedin.com/in/username');
+      }
       if (!grecaptcha.getResponse()) {
         event.preventDefault();
         alert('Please complete the reCAPTCHA verification.');
